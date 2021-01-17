@@ -3,16 +3,17 @@ using System.Linq;
 using System.Xml.Linq;
 using TicketShop.StatGen;
 
+[assembly: System.CLSCompliant(false)]
 namespace TicketShop.XML
 {
-    public class XMLgeneration
+    public static class XMLgeneration
     {
         /// <summary>
         /// Capable of generating an XML file from a list of type DailySale.
         /// </summary>
         /// <param name="dailySales">A list of DalySale instances</param>
         /// <returns>The XML file as a whole containing the necessary structure.</returns>
-        public static XDocument GenerateXML(List<DailySale> dailySales)
+        public static XDocument GenerateXML(IEnumerable<DailySale> dailySales)
         {
             XDocument output = new XDocument(new XElement("stats"));
 
@@ -41,9 +42,9 @@ namespace TicketShop.XML
         }
     }
 
-    public class XmlGenerator
+    public static class XmlGenerator
     {
-        public static XDocument GenerateXml(List<DailySale> list)
+        public static XDocument GenerateXml(IEnumerable<DailySale> list)
         {
             XDocument output = new XDocument(new XElement("stats"));
 

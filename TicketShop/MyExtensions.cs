@@ -7,6 +7,7 @@ namespace TicketShop
     {
         public static void ToConsole<T>(this IEnumerable<T> input, string str)
         {
+            if (input is null) throw new ArgumentNullException(nameof(input));
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\n\tBEGIN: " + str);
             Console.ResetColor();

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+[assembly: System.CLSCompliant(false)]
 namespace TicketShop.DB
 {
     public partial class TicketShopDbContext : DbContext
@@ -15,6 +16,7 @@ namespace TicketShop.DB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (optionsBuilder is null) throw new System.ArgumentNullException(nameof(optionsBuilder));
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
@@ -25,6 +27,7 @@ namespace TicketShop.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            if (modelBuilder is null) throw new System.ArgumentNullException(nameof(modelBuilder));
             modelBuilder.Entity<Sector>(entity =>
             {
                 entity.HasOne(sector => sector.Venue)

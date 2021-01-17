@@ -9,8 +9,8 @@ namespace TicketShop.DB
     {
         public Venue()
         {
-            Sectors = new HashSet<Sector>();
-            Sellers = new HashSet<Seller>();
+            this.Sectors = new HashSet<Sector>();
+            this.Sellers = new HashSet<Seller>();
         }
 
         [Key]
@@ -21,9 +21,9 @@ namespace TicketShop.DB
         public string Name { get; set; }
         
         [NotMapped]
-        public virtual ICollection<Sector> Sectors { get; set; }
+        public virtual ICollection<Sector> Sectors { get; private set; }
 
         [NotMapped]
-        public virtual ICollection<Seller> Sellers { get; set; }
+        public virtual ICollection<Seller> Sellers { get; private set; }
     }
 }

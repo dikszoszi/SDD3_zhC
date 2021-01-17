@@ -5,11 +5,12 @@ using TicketShop.DB;
 using TicketShop.StatGen;
 using TicketShop.XML;
 
+[assembly: CLSCompliant(false)]
 namespace TicketShop
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             TicketShopDbContext ctx = new TicketShopDbContext();
 
@@ -21,7 +22,7 @@ namespace TicketShop
             string[] sellers = ctx.Set<Seller>().Select(x => x.Name).ToArray();
             sellers.ToConsole("SELLERS");
 
-            List<DailySale> dailySales = new DailyStatGenerator(sectors, sellers).GenerateList(5, 20, 10);
+            IEnumerable<DailySale> dailySales = new DailyStatGenerator(sectors, sellers).GenerateList(5, 20, 10);
             dailySales.ToConsole("LIST");
 
             //foreach (DailySale dailySale in dailySales) Console.WriteLine(dailySale.ToString());
@@ -51,6 +52,8 @@ namespace TicketShop
 
             Console.WriteLine("ALL OK: " + remainingSeats.All(x => x.Remaining > 0));
             Console.WriteLine("ALL OK: " + (!remainingSeats.Any(x => x.Remaining < 0)));
+
+            ctx.Dispose();
         }
     }
 }
