@@ -12,7 +12,7 @@ namespace TicketShop
     {
         private static void Main()
         {
-            TicketShopDbContext ctx = new TicketShopDbContext();
+            TicketShopDbContext ctx = new ();
 
             ctx.Set<Venue>().Select(x => x.Name).ToConsole("VENUES");
 

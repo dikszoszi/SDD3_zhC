@@ -6,7 +6,7 @@ namespace TicketShop.StatGen
 {
     public class DailyStatGenerator
     {
-        static readonly Random rnd = new Random();
+        static readonly Random rnd = new ();
 
         public IList<string> Sectors { get; private set; }
         public IList<string> Sellers { get; private set; }

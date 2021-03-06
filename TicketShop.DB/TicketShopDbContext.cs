@@ -42,12 +42,12 @@ namespace TicketShop.DB
                 .HasForeignKey(seller => seller.VenueId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
             });
-            Venue venue1 = new Venue() { Id = 1, Name = "Papp László Sports Arena" };
-            Sector sector1 = new Sector() { Id = 1, Code = "A", Capacity = 1100, VenueId = venue1.Id };
-            Sector sector2 = new Sector() { Id = 2, Code = "B", Capacity = 2500, VenueId = venue1.Id };
-            Sector sector3 = new Sector() { Id = 3, Code = "C", Capacity = 1500, VenueId = venue1.Id };
-            Seller seller1 = new Seller() { Id = 1, Name = "Broadway", VenueId = venue1.Id };
-            Seller seller2 = new Seller() { Id = 2, Name = "Eventim", VenueId = venue1.Id };
+            Venue venue1 = new () { Id = 1, Name = "Papp László Sports Arena" };
+            Sector sector1 = new () { Id = 1, Code = "A", Capacity = 1100, VenueId = venue1.Id };
+            Sector sector2 = new () { Id = 2, Code = "B", Capacity = 2500, VenueId = venue1.Id };
+            Sector sector3 = new () { Id = 3, Code = "C", Capacity = 1500, VenueId = venue1.Id };
+            Seller seller1 = new () { Id = 1, Name = "Broadway", VenueId = venue1.Id };
+            Seller seller2 = new () { Id = 2, Name = "Eventim", VenueId = venue1.Id };
 
             modelBuilder.Entity<Venue>().HasData(venue1);
             modelBuilder.Entity<Sector>().HasData(sector1, sector2, sector3);

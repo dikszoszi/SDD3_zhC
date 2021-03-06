@@ -15,7 +15,7 @@ namespace TicketShop.XML
         /// <returns>The XML file as a whole containing the necessary structure.</returns>
         public static XDocument GenerateXML(IEnumerable<DailySale> dailySales)
         {
-            XDocument output = new XDocument(new XElement("stats"));
+            XDocument output = new (new XElement("stats"));
 
             var q1 = dailySales
                 .GroupBy(singleStat => singleStat.Date)
@@ -23,7 +23,7 @@ namespace TicketShop.XML
 
             foreach (var grp in q1)
             {
-                XElement node = new XElement("day");
+                XElement node = new ("day");
                 node.SetAttributeValue("date", grp.Key.Date.ToShortDateString());
 
                 var q2 = grp.GroupBy(item => item.SectorCode).Select(sectorGrp =>
